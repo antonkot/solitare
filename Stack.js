@@ -11,6 +11,18 @@ class Stack {
                 }
             }
         }
+
+        if (shuffle) {
+            let newCards = []
+
+            while (this.cards.length > 0) {
+                let index = Math.floor(Math.random() * this.cards.length)
+                let card = this.cards.splice(index, 1)[0]
+                newCards.push(card)
+            }
+
+            this.cards = newCards
+        }
     }
 
     print() {

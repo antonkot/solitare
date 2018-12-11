@@ -1,2 +1,2 @@
-let stack = new Stack(false)
-// stack.print()
+let stack = new Stack(false, true)
+stack.print()
