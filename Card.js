@@ -7,6 +7,11 @@ class Card {
 
         this.element = document.createElement('div')
         this.element.className = 'card'
+
+        this.dx = -1 * (this.kind - 1) * 79 + "px"
+        this.dy = -1 * this.suit * 123 + "px"
+
+        this.element.style.backgroundPosition = "-158px -492px"
         this.app.appendChild(this.element)
     }
 
