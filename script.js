@@ -1,2 +1,2 @@
-let stack = new Stack(false, true)
-stack.print()
+const app = document.getElementById('app')
+let stack = new Stack(app, false, true)

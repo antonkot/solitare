@@ -1,8 +1,13 @@
 class Card {
-    constructor(suit_, kind_) {
+    constructor(suit_, kind_, app_) {
         this.suit = suit_
         this.kind = kind_
         this.faceUp = false
+        this.app = app_
+
+        this.element = document.createElement('div')
+        this.element.className = 'card'
+        this.app.appendChild(this.element)
     }
 
     print() {

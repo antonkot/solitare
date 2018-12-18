@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+#app {
+    background-color: #391;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.card {
+    position: absolute;
+    width: 79px;
+    height: 123px;
+    background-image: url('sprite.png');
+}
