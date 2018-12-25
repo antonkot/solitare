@@ -13,6 +13,16 @@ body {
     position: absolute;
 }
 
+.stack::before {
+    content: '';
+    position: absolute;
+    width: 79px;
+    height: 123px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: 0;
+}
+
 .card {
     position: absolute;
     width: 79px;
