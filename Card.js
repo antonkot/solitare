@@ -1,9 +1,9 @@
 class Card {
-    constructor(suit_, kind_, app_) {
+    constructor(suit_, kind_, stack_) {
         this.suit = suit_
         this.kind = kind_
         this.faceUp = false
-        this.app = app_
+        this.stack = stack_
 
         this.element = document.createElement('div')
         this.element.className = 'card'
@@ -12,7 +12,7 @@ class Card {
         this.dy = -1 * this.suit * 123 + "px"
 
         this.element.style.backgroundPosition = "-158px -492px"
-        this.app.appendChild(this.element)
+        this.stack.element.appendChild(this.element)
     }
 
     print() {

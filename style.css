@@ -9,6 +9,10 @@ body {
     position: relative;
 }
 
+.stack {
+    position: absolute;
+}
+
 .card {
     position: absolute;
     width: 79px;
