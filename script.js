@@ -9,3 +9,7 @@ let playingStacks = []
 let homeStacks = []
 
 init()
+
+let card = mainStack.cards[mainStack.cards.length - 1]
+console.log(card);
+card.flip()

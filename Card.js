@@ -15,6 +15,16 @@ class Card {
         this.stack.element.appendChild(this.element)
     }
 
+    flip() {
+        this.faceUp = !this.faceUp
+        if (this.faceUp) {
+            this.element.style.backgroundPositionX = this.dx
+            this.element.style.backgroundPositionY = this.dy
+        } else {
+            this.element.style.backgroundPosition = "-158px -492px"
+        }
+    }
+
     print() {
         let suits = ['&hearts;', '&diams;', '&clubs;', '&spades;']
         let kinds = {
