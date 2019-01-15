@@ -24,10 +24,31 @@ class Stack {
                 let index = Math.floor(Math.random() * this.cards.length)
                 let card = this.cards.splice(index, 1)[0]
                 newCards.push(card)
+                card.element.style.zIndex = newCards.length
             }
 
             this.cards = newCards
         }
+    }
+
+    deal() {
+        return this.cards.pop()
+    }
+
+    last() {
+        return this.cards[this.cards.length - 1]
+    }
+
+    push(card) {
+        card.element.remove()
+        let last = this.last()
+        if (last) {
+            this.last().element.appendChild(card.element)
+        } else {
+            this.element.appendChild(card.element)
+        }
+        card.element.style.zIndex = this.cards.length
+        this.cards.push(card)
     }
 
     print() {
