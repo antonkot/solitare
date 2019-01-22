@@ -35,5 +35,9 @@ body {
 }
 
 .stack.playing .card {
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+.stack.playing>.card {
+    margin-top: 0;
 }
