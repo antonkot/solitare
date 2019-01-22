@@ -8,6 +8,10 @@ class Card {
         this.element = document.createElement('div')
         this.element.className = 'card'
 
+        this.element.addEventListener('click', evt => {
+            console.log(this)
+        })
+
         this.dx = -1 * (this.kind - 1) * 79 + "px"
         this.dy = -1 * this.suit * 123 + "px"
 
