@@ -1,11 +1,12 @@
 class Stack {
-    constructor(app_, empty = true, shuffle = false) {
+    constructor(app_, empty = true, shuffle = false, type_ = 'playing') {
         this.cards = []
         this.app = app_
+        this.type = type_
 
         this.element = document.createElement('div')
         this.element.className = 'stack'
-        this.app.appendChild(this.element)
+        this.app.element.appendChild(this.element)
 
         if (!empty) {
             // Suit from #0 to #3
@@ -31,6 +32,10 @@ class Stack {
         }
     }
 
+    onClick(card) {
+        this.app.onClick(card)
+    }
+
     deal() {
         return this.cards.pop()
     }
@@ -49,6 +54,7 @@ class Stack {
         }
         card.element.style.zIndex = this.cards.length
         this.cards.push(card)
+        card.stack = this
     }
 
     print() {

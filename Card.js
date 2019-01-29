@@ -9,7 +9,8 @@ class Card {
         this.element.className = 'card'
 
         this.element.addEventListener('click', evt => {
-            console.log(this)
+            evt.cancelBubble = true
+            this.stack.onClick(this)
         })
 
         this.dx = -1 * (this.kind - 1) * 79 + "px"
