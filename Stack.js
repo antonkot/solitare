@@ -8,6 +8,14 @@ class Stack {
         this.element.className = 'stack'
         this.app.element.appendChild(this.element)
 
+        this.element.addEventListener('dragenter', evt => {
+            evt.preventDefault()
+            this.app.onDragEnter(this)
+        })
+        this.element.addEventListener('dragleave', evt => {
+            this.app.onDragLeave(this)
+        })
+
         if (!empty) {
             // Suit from #0 to #3
             for (var s = 0; s < 4; s++) {
@@ -34,6 +42,10 @@ class Stack {
 
     onClick(card) {
         this.app.onClick(card)
+    }
+
+    onDragStart(card) {
+        this.app.onDragStart(card)
     }
 
     deal() {

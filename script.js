@@ -8,6 +8,8 @@ let app = {
     subStack: null,
     playingStacks: [],
     homeStacks: [],
+    currentCard: null,
+    timeout: null,
     onClick: function(card) {
         switch (card.stack.type) {
             case 'main':
@@ -24,6 +26,27 @@ let app = {
                 }
                 break;
         }
+    },
+    onDragStart: function(card) {
+        this.currentCard = card
+    },
+    onDragEnter: function(stack) {
+        if (this.currentCard != null) {
+            if (stack != this.currentCard.stack) {
+                if (this.timeout != null) {
+                    clearTimeout(this.timeout)
+                }
+                stack.element.classList.add('active')
+            }
+        }
+    },
+    onDragLeave: function(stack) {
+        if (this.timeout == null) {
+            this.timeout = setTimeout(function() {
+                stack.element.classList.remove('active')
+            }, 10)
+        }
+        console.log(this.timeout)
     }
 }
 

@@ -7,10 +7,16 @@ class Card {
 
         this.element = document.createElement('div')
         this.element.className = 'card'
+        this.element.draggable = true
 
         this.element.addEventListener('click', evt => {
             evt.cancelBubble = true
             this.stack.onClick(this)
+        })
+
+        this.element.addEventListener('dragstart', evt => {
+            evt.cancelBubble = true
+            this.stack.onDragStart(this)
         })
 
         this.dx = -1 * (this.kind - 1) * 79 + "px"
