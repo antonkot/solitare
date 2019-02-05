@@ -15,6 +15,14 @@ let app = {
                 last.flip()
                 this.subStack.push(last)
                 break;
+            case 'playing':
+                if (
+                    !card.faceUp &&
+                    card.stack.cards.indexOf(card) == card.stack.cards.length - 1
+                ) {
+                    card.flip()
+                }
+                break;
         }
     }
 }
