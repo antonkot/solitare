@@ -15,6 +15,13 @@ class Stack {
         this.element.addEventListener('dragleave', evt => {
             this.app.onDragLeave(this)
         })
+        this.element.addEventListener('dragover', evt => {
+            evt.preventDefault()
+        })
+        this.element.ondrop = evt => {
+            evt.preventDefault()
+            this.app.onDrop(this)
+        }
 
         if (!empty) {
             // Suit from #0 to #3
@@ -60,7 +67,7 @@ class Stack {
         card.element.remove()
         let last = this.last()
         if (last) {
-            this.last().element.appendChild(card.element)
+            last.element.appendChild(card.element)
         } else {
             this.element.appendChild(card.element)
         }
