@@ -43,7 +43,10 @@ let app = {
                 // kind of current card is less than last card's kind by 1
                 if (last.kind - this.currentCard.kind == 1) {
                     // sum of both card's suits equals 3 when colors are match
-                    if (last.suit + this.currentCard.suit == 3) {
+                    if (
+                        last.suit == this.currentCard.suit ||
+                        last.suit + this.currentCard.suit == 3
+                    ) {
                         return false
                     } else {
                         return true
@@ -77,9 +80,20 @@ let app = {
     },
     onDrop: function(stack) {
         if (this.canDrop(stack)) {
-            // TODO: consider case when there is more
-            // than one card dragging 
-            stack.push(this.currentCard.stack.deal())
+            // consider case when there is more
+            // than one card dragging
+
+            let idx = this.currentCard.stack.cards.indexOf(this.currentCard)
+            let count = this.currentCard.stack.cards.length - idx
+
+            let buffer = []
+
+            for (let i = 0; i < count; i++) {
+                buffer.push(this.currentCard.stack.deal())
+            }
+            for (let j = count - 1; j >= 0; j--) {
+                stack.push(buffer[j])
+            }
             stack.element.classList.remove('active')
         }
     }
