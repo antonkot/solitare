@@ -56,6 +56,34 @@ let app = {
                 }
             }
         }
+
+        if (stack.type == 'home') {
+            let idx = this.currentCard.stack.cards.indexOf(this.currentCard)
+            let count = this.currentCard.stack.cards.length - idx
+
+            if (count > 1) {
+                return false
+            } else {
+                if (stack.cards.length == 0) {
+                    if (this.currentCard.kind == 1) {
+                        return true
+                    } else {
+                        return false
+                    }
+                } else {
+                    let last = stack.cards[stack.cards.length - 1]
+                    if (last.suit == this.currentCard.suit) {
+                        if (this.currentCard.kind - last.kind == 1) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                }
+            }
+        }
     },
     onDragStart: function(card) {
         this.currentCard = card
@@ -99,5 +127,15 @@ let app = {
     }
 }
 
-
 init(app)
+
+app.mainStack.element.addEventListener('click', evt => {
+    if (app.mainStack.cards.length == 0) {
+        let count = app.subStack.cards.length
+        for (let i = 0; i < count; i++) {
+            let card = app.subStack.deal()
+            card.flip()
+            app.mainStack.push(card)
+        }
+    }
+})
